@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
         std::numeric_limits<int>::min(), std::numeric_limits<int>::max());
 
     int nodos_inicio, operaciones;
-    float p_inserts, p_deletes, p_busquedas;
+    int p_inserts, p_deletes, p_busquedas;
 
     nodos_inicio = atoi(argv[1]);
     operaciones = atoi(argv[2]);
@@ -31,9 +31,6 @@ int main(int argc, char *argv[]) {
     p_deletes = atoi(argv[4]);
     p_busquedas = atoi(argv[5]);
 
-    std::discrete_distribution<int> distribution_custom(
-        {p_inserts, p_deletes, p_busquedas});
-
     // Inicializar el árbol
     for (int i = 0; i < nodos_inicio; ++i) {
       cout << "a " << distribution(gen) << endl;
@@ -41,13 +38,12 @@ int main(int argc, char *argv[]) {
 
     // Operaciones
     for (int i = 0; i < operaciones; ++i) {
-      int randomNumber = distribution_custom(gen);
-
-      if (randomNumber == 0) {
+      if (i >= (operaciones / 100) * p_deletes &&
+          i < (operaciones / 100) * (p_deletes + p_inserts)) {
         cout << "a " << distribution(gen) << endl;
       }
 
-      else if (randomNumber == 1) {
+      else if (i < (operaciones / 100) * p_deletes) {
         cout << "d " << distribution(gen) << endl;
       }
 
