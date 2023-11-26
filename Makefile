@@ -1,14 +1,12 @@
-all: RedBlack AVL Splay generateInput
+all: RedBlack generateInput Makefile
 
 RedBlack: RedBlackTree.cpp
 	g++ -o RedBlackTree RedBlackTree.cpp
 
-AVL:
-
-Splay:
-
-generateInput:
+generateInput: generateInput.cpp
 	g++ -o generateInput generateInput.cpp
 
 clean:
-	rm -rf RedBlackTree generateInput *.txt
+	rm -rf RedBlackTree AVLTree SplayTree generateInput *.txt
+
+.PHONY: clean all
