@@ -179,43 +179,30 @@ int main()
     s *root;
     root = nullptr;
     st.InOrder(root);
-    int i, c;
-    for (int j = 0; j < 1000000; j++)
-    {
-        int r = rand();
-        root = st.Insert(r, root);
-    }
+    int i;
+	int r;
+	char c;
+	auto start_time = std::chrono::high_resolution_clock::now();
     while (1)
     {
-        std::cout << "1. Insert " << std::endl;
-        std::cout << "2. Delete" << std::endl;
-        std::cout << "3. Search" << std::endl;
-        std::cout << "4. Exit" << std::endl;
-        std::cout << "Enter your choice: ";
         std::cin >> c;
 
-        if (c == 1)
+        if (c == 'a')
         {
-            auto start_time = std::chrono::high_resolution_clock::now();
-			for (int l = 0; l < 1000000; l++) {
-           		 i = rand();
-            	root = st.Insert(i, root);
-			}
-            auto end_time = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
-            std::cout << "Time elapsed: " << duration.count() << " milliseconds\n";
+			std::cin >> i;
+            root = st.Insert(i, root);
         }
-        else if (c == 2)
+        else if (c == 'd')
         {
             std::cin >> i;
             root = st.Delete(i, root);
         }
-        else if (c == 3)
+        else if (c == 's')
         {
             std::cin >> i;
             root = st.Search(i, root);
         }
-        else if (c == 4)
+        else if (c == '*')
         {
             break;
         }
@@ -224,6 +211,9 @@ int main()
             std::cout << "\nInvalid type! \n";
         }
     }
+	auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
     std::cout << "\n";
+    std::cout << "Time elapsed: " << duration.count() << " milliseconds\n";
     return 0;
 }
