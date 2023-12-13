@@ -1,7 +1,10 @@
-all: RedBlack generateInput Makefile
+all: RedBlack generateInput Makefile SplayTree
 
 RedBlack: RedBlackTree.cpp
 	g++ -o RedBlackTree RedBlackTree.cpp
+
+SplayTree: splay_tree.cc
+	g++ -o SplayTree splay_tree.cc
 
 generateInput: generateInput.cpp
 	g++ -o generateInput generateInput.cpp
