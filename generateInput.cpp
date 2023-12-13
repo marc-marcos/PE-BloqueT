@@ -21,6 +21,8 @@ int main(int argc, char *argv[]) {
     std::uniform_int_distribution<int> distribution(
         std::numeric_limits<int>::min(), std::numeric_limits<int>::max());
 
+    std::uniform_int_distribution<int> distribution_2(0, 2);
+
     int nodos_inicio, operaciones;
     int p_inserts, p_deletes, p_busquedas;
 
@@ -38,12 +40,13 @@ int main(int argc, char *argv[]) {
 
     // Operaciones
     for (int i = 0; i < operaciones; ++i) {
-      if (i >= (operaciones / 100) * p_deletes &&
-          i < (operaciones / 100) * (p_deletes + p_inserts)) {
+      int operacion = distribution_2(gen);
+
+      if (operacion == 1) {
         cout << "a " << distribution(gen) << endl;
       }
 
-      else if (i < (operaciones / 100) * p_deletes) {
+      else if (operacion == 2) {
         cout << "d " << distribution(gen) << endl;
       }
 
