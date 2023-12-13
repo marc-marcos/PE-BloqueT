@@ -7,9 +7,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
   if (argc != 6) {
-    cout
-        << "Usage: nodos_inicio, operaciones, p_inserts, p_deletes, p_busquedas"
-        << endl;
+    cout << "Usage: nodos_inicio, operaciones" << endl;
   }
 
   else {
@@ -19,7 +17,8 @@ int main(int argc, char *argv[]) {
     std::mt19937 gen(rd());
 
     std::uniform_int_distribution<int> distribution(
-        std::numeric_limits<int>::min(), std::numeric_limits<int>::max());
+        std::numeric_limits<short>::min() * 4,
+        std::numeric_limits<short>::max() * 4);
 
     std::uniform_int_distribution<int> distribution_2(0, 2);
 
