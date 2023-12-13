@@ -39,14 +39,12 @@ int main(int argc, char *argv[]) {
 
     // Operaciones
     for (int i = 0; i < operaciones; ++i) {
-      int operacion = distribution_2(gen);
-
-      if (operacion == 1) {
-        cout << "a " << distribution(gen) << endl;
+      if (i < operaciones * 0.33) {
+        cout << "d " << distribution(gen) << endl;
       }
 
-      else if (operacion == 2) {
-        cout << "d " << distribution(gen) << endl;
+      else if (i >= operaciones * 0.33 and i < operaciones * 0.66) {
+        cout << "a " << distribution(gen) << endl;
       }
 
       else {
