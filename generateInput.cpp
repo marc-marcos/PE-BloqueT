@@ -28,10 +28,6 @@ int main(int argc, char *argv[]) {
     nodos_inicio = atoi(argv[1]);
     operaciones = atoi(argv[2]);
 
-    p_inserts = atoi(argv[3]);
-    p_deletes = atoi(argv[4]);
-    p_busquedas = atoi(argv[5]);
-
     // Inicializar el árbol
     for (int i = 0; i < nodos_inicio; ++i) {
       cout << "a " << distribution(gen) << endl;
