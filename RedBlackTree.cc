@@ -165,7 +165,8 @@ private:
     }
 
     if (z == TNULL) {
-      std::cout << "Couldn't find key in the tree" << std::endl;
+      // std::cout << "Couldn't find key in the tree" << std::endl;
+      // TODO
       return;
     }
 
@@ -453,6 +454,7 @@ int main() {
 
   char operacion;
   int numero;
+  std::string tipo_de_input = "balanced";
 
   auto start_time = std::chrono::high_resolution_clock::now();
 
@@ -482,7 +484,7 @@ int main() {
   auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(
       end_time - start_time);
 
-  std::cout << "Tiempo transcurrido: " << duration.count() << " milisegundos\n";
+  std::cout << duration.count() << " " << tipo_de_input << " RedBlack";
 
   return 0;
 }
