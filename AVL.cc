@@ -217,5 +217,5 @@ int main() {
   auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(
       end_time - start_time);
 
-  std::cout << "AVL " << mode << " " << duration.count() << std::endl;
+  std::cout << "AVL " << mode << " " << duration.count();
 }
