@@ -1,7 +1,14 @@
-my_data <- read.table("/home/marcmarcos/Desktop/PE-BloqueT/output_grande.txt", header=TRUE)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(viridis)
+
+my_data <- read.table("/home/marcmarcos/Desktop/PE-BloqueT/output.txt", header=TRUE)
 split_data <- split(my_data, my_data$Arbol)
 
 my_data$Tiempo 
+
+## QQ PLOTS QQ PLOTS QQ PLOTS QQ PLOTS QQ PLOTS QQ PLOTS QQ PLOTS QQ PLOTS QQ PLOTS 
 
 qqnorm(split_data$AVL$Tiempo, pch = 1, frame = FALSE, main="Q-Q Plot AVL")
 qqline(split_data$AVL$Tiempo, col = "steelblue", lwd = 2)
@@ -16,6 +23,8 @@ qqnorm(my_data$Tiempo, pch = 1, frame = FALSE, main="Q-Q Plot All Trees")
 qqline(my_data$Tiempo, col = "steelblue", lwd = 2)
 
 data_list <- list(AVL = split_data$AVL$Tiempo, SplayTree = split_data$SplayTree$Tiempo, RedBlack = split_data$RedBlack$Tiempo)
+
+# BOXPLOT BOXPLOT BOXPLOT BOXPLOT BOXPLOT BOXPLOT BOXPLOT BOXPLOT BOXPLOT 
 
 # Create a boxplot for each vector
 boxplot(data_list, col = c("red", "green", "blue"), names = c("AVL", "SplayTree", "RedBlack"),
@@ -49,3 +58,19 @@ data_list_insert = list(AVL = split_data_AVL$inserts$Tiempo, split_data_SplayTre
 
 boxplot(data_list_insert, col = c("red", "green", "blue"), names = c("AVL", "SplayTree", "RedBlack"),
         main = "Boxplots con input con inserts predominantes", ylab = "Tiempo")
+
+
+# HISTOGRAMAS HISTOGRAMAS HISTOGRAMAS HISTOGRAMAS HISTOGRAMAS HISTOGRAMAS HISTOGRAMAS 
+
+hist(data_list$AVL, breaks=seq(550, 1200, 10), xlim=c(600,1200), col=rgb(1,0,0,0.5), xlab="Tiempo", 
+     ylab="number of trees", main="distribution of height of 2 durum wheat varieties" )
+
+# Second with add=T to plot on top
+hist(data_list$SplayTree, breaks=seq(550, 1200, 10), xlim=c(600,1200), col=rgb(0,1,0,0.5), add=T)
+
+hist(data_list$RedBlack, breaks=seq(550, 1200, 10), xlim=c(600,1200), col=rgb(0,0,1,0.5), add=T)
+
+# Add legend
+legend("topright", legend=c("AVL","SplayTree", "RedBlack"), col=c(rgb(1,0,0,0.5), 
+                                                      rgb(0,1,0,0.5),
+                                                      rgb(0,0,1,0.5)), pt.cex=2, pch=15 )

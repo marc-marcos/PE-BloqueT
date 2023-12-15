@@ -13,6 +13,6 @@ AVL: AVL.cc
 	g++ -o AVL AVL.cc
 
 clean:
-	rm -rf RedBlackTree SplayTree generateInput *.txt AVL 
+	rm -rf RedBlackTree SplayTree generateInput AVL 
 
 .PHONY: clean all
