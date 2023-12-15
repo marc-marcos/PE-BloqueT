@@ -454,7 +454,6 @@ int main() {
 
   char operacion;
   int numero;
-  std::string tipo_de_input = "balanced";
 
   auto start_time = std::chrono::high_resolution_clock::now();
 
@@ -484,7 +483,7 @@ int main() {
   auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(
       end_time - start_time);
 
-  std::cout << duration.count() << " " << tipo_de_input << " RedBlack";
+  std::cout << duration.count() << " RedBlack";
 
   return 0;
 }

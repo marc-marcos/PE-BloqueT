@@ -18,10 +18,41 @@ int main(int argc, char *argv[]) {
   std::uniform_int_distribution<int> distribution_2(0, 2);
 
   int nodos_inicio, operaciones;
-  int p_inserts, p_deletes, p_busquedas;
+  string distribucion;
+  float p_inserts, p_deletes, p_busquedas;
 
   nodos_inicio = atoi(argv[1]);
   operaciones = atoi(argv[2]);
+  distribucion = argv[3];
+
+  if (distribucion == "balanced") {
+    p_inserts = 0.33;
+    p_deletes = 0.33;
+    p_busquedas = 0.33;
+  }
+
+  else if (distribucion == "inserts") {
+    p_inserts = 0.60;
+    p_deletes = 0.20;
+    p_busquedas = 0.20;
+  }
+
+  else if (distribucion == "deletes") {
+    p_inserts = 0.20;
+    p_deletes = 0.60;
+    p_busquedas = 0.20;
+  }
+
+  else if (distribucion == "searches") {
+    p_inserts = 0.20;
+    p_deletes = 0.20;
+    p_busquedas = 0.60;
+  }
+
+  else {
+    cout << "Distribución no válida" << endl;
+    return 0;
+  }
 
   // Inicializar el árbol
   for (int i = 0; i < nodos_inicio; ++i) {
@@ -30,11 +61,11 @@ int main(int argc, char *argv[]) {
 
   // Operaciones
   for (int i = 0; i < operaciones; ++i) {
-    if (i < operaciones * 0.33) {
+    if (i < operaciones * p_inserts) {
       cout << "a " << distribution(gen) << endl;
     }
 
-    else if (i >= operaciones * 0.33 and i < operaciones * 0.66) {
+    else if (i >= operaciones * p_inserts and i < operaciones * (p_inserts + p_busquedas)) {
       cout << "s " << distribution(gen) << endl;
     }
 
